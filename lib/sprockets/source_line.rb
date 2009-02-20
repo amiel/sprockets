@@ -10,6 +10,7 @@ module Sprockets
 
     def comment
       @comment ||= line[/^\s*\/\/(.*)/, 1]
+      @comment ||= line[/^\s*\/\*(.*)\s*\*\/$/, 1]
     end
 
     def comment?
