@@ -80,12 +80,16 @@ module Sprockets
       end
       
       def copy_assets_from(asset_path)
-        relative_file_paths_beneath(asset_path).each do |filename|
-          source, destination = File.join(asset_path, filename), File.join(asset_root, File.dirname(filename))
-          if !File.directory?(source)
-            FileUtils.mkdir_p(destination)
-            FileUtils.cp(source, destination)
+        if File.directory?(asset_path)
+          relative_file_paths_beneath(asset_path).each do |filename|
+            source, destination = File.join(asset_path, filename), File.join(asset_root, File.dirname(filename))
+            if !File.directory?(source)
+              FileUtils.mkdir_p(destination)
+              FileUtils.cp(source, destination)
+            end
           end
+        else
+          FileUtils.cp(asset_path, asset_root)
         end
       end
       
