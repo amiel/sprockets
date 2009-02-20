@@ -75,7 +75,8 @@ module Sprockets
 
       def location_from(source_line)
         location = source_line.require[/^.(.*).$/, 1]
-        File.join(File.dirname(location), File.basename(location, ".js") + ".js")
+        ext = (source_line.source_file.pathname.to_s)[/(\.[^.]+)$/,1]
+        File.join(File.dirname(location), File.basename(location, ext) + ext)
       end
       
       def asset_path_from(source_line)
