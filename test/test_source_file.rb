@@ -27,4 +27,8 @@ class SourceFileTest < Test::Unit::TestCase
     assert_not_equal source_file("src/foo/foo.js"), source_file("src/foo.js")
     assert_not_equal source_file("src/foo/foo.js"), source_file("src/foo/bar.js")
   end
+  
+  def test_mtime_should_return_now_if_file_does_not_exist
+    assert source_file("src/foo/nonexistent.js").mtime.instance_of?(Time)
+  end
 end
