@@ -1,0 +1,4 @@
+.before_require{ color: #000; }
+/*= require <foo> */
+.after_require{ color: #111; }
+

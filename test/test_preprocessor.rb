@@ -63,6 +63,15 @@ class PreprocessorTest < Test::Unit::TestCase
     LINES
   end
   
+  def test_requiring_a_file_with_css_style_comments_should_replace_the_require_comment_with_file_contents
+    require_file_for_this_test(:css)
+    assert_concatenation_contains <<-LINES
+      .before_require{ color: #000; }
+      #required_content{ color: #222; }
+      .after_require{ color: #111; }
+    LINES
+  end
+  
   protected
     attr_reader :environment, :preprocessor
     
@@ -82,12 +91,12 @@ class PreprocessorTest < Test::Unit::TestCase
       preprocessor.require(environment.find(location).source_file)
     end
     
-    def require_file_for_this_test
-      require_file(file_for_this_test)
+    def require_file_for_this_test(ext = 'js')
+      require_file(file_for_this_test(ext))
     end
     
-    def file_for_this_test
-      caller.map { |c| c[/`(.*?)'$/, 1] }.grep(/^test_/).first[5..-1] + ".js"
+    def file_for_this_test(ext)
+      caller.map { |c| c[/`(.*?)'$/, 1] }.grep(/^test_/).first[5..-1] + ".#{ext.to_s}"
     end
     
     def assert_concatenation_does_not_contain_line(line)
