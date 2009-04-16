@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name = "sprockets"
-  s.version = "1.0.2"
-  s.date = "2009-02-24"
-  s.summary = "JavaScript dependency management and concatenation"
+  s.version = "1.0.3"
+  s.date = "2009-04-16"
+  s.summary = "JavaScript and CSS dependency management and concatenation"
   s.email = "sstephenson@gmail.com"
   s.homepage = "http://getsprockets.org/"
   s.description = "Sprockets is a Ruby library that preprocesses and concatenates JavaScript and other source files."
