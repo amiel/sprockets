@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "sprockets"
-  s.version = "1.0.3"
+  s.version = "1.0.4"
   s.date = "2009-04-16"
   s.summary = "JavaScript and CSS dependency management and concatenation"
   s.email = "sstephenson@gmail.com"
