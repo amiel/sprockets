@@ -38,8 +38,6 @@ Use single-line <nobr>(`//`)</nobr> comments in JavaScript source files for comm
 
 Comments beginning with `//=` are treated by Sprockets as _directives_. Sprockets currently understands two directives, `require` and `provide`.
 
-Sprockets also treats _directives_ in single-line css style comments <nobr>(`/*= ... */`)</nobr>.
-
 ### Specifying dependencies with the `require` directive
 
 Use the `require` directive to tell Sprockets that another JavaScript source file should be inserted into the concatenation before continuing to preprocess the current source file. If the specified source file has already been required, Sprockets ignores the directive.
