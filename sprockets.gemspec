@@ -6,7 +6,6 @@ Gem::Specification.new do |s|
   s.email = "sstephenson@gmail.com"
   s.homepage = "http://getsprockets.org/"
   s.description = "Sprockets is a Ruby library that preprocesses and concatenates JavaScript and other source files."
-  s.rubyforge_project = "sprockets"
   s.has_rdoc = false
   s.authors = ["Sam Stephenson", "Amiel Martin"]
   s.files = Dir["Rakefile", "bin/**/*", "lib/**/*", "test/**/*", "ext/**/*"]
