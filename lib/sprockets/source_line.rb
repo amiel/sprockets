@@ -10,7 +10,10 @@ module Sprockets
 
     def comment
       @comment ||= line[/^\s*\/\/(.*)/, 1]
-      @comment ||= line[/^\s*\/\*(.*)\s*\*\/$/, 1]
+    end
+    
+    def parsable_comment
+      @parsable_comment ||= comment || line[/^\s*\/\*(.*)\s*\*\/$/, 1]
     end
 
     def comment?
@@ -38,7 +41,7 @@ module Sprockets
     end
 
     def require
-      @require ||= (comment || "")[/^=\s+require\s+(\"(.*?)\"|<(.*?)>)\s*$/, 1]
+      @require ||= (parsable_comment || "")[/^=\s+require\s+(\"(.*?)\"|<(.*?)>)\s*$/, 1]
     end
     
     def require?
@@ -46,7 +49,7 @@ module Sprockets
     end
     
     def provide
-      @provide ||= (comment || "")[/^=\s+provide\s+\"(.*?)\"\s*$/, 1]
+      @provide ||= (parsable_comment || "")[/^=\s+provide\s+\"(.*?)\"\s*$/, 1]
     end
     
     def provide?

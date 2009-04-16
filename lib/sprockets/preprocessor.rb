@@ -75,7 +75,7 @@ module Sprockets
 
       def location_from(source_line)
         location = source_line.require[/^.(.*).$/, 1]
-        ext = (source_line.source_file.pathname.to_s)[/(\.[^.]+)$/,1]
+        ext = File.extname source_line.source_file.pathname.to_s
         File.join(File.dirname(location), File.basename(location, ext) + ext)
       end
       
