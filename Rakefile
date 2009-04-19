@@ -17,3 +17,10 @@ Rake::GemPackageTask.new(eval(IO.read(File.join(File.dirname(__FILE__), "sprocke
   pkg.need_zip = true
   pkg.need_tar = true
 end
+
+namespace :manifest do
+	task :generate do
+		files = Dir["Rakefile", "bin/**/*", "lib/**/*", "test/**/*", "ext/**/*"]
+		File.open("MANIFEST.txt", "w"){|f| f.puts *files }
+	end
+end
